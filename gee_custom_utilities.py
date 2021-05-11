@@ -83,7 +83,7 @@ def time_series_regions_reducer(imgcol,
         return img.set(data_dict)
     reduced_collection = imgcol.map(run_reduce)
     # print(test3.getInfo())
-    bairros_list_temp = ee.List(geometry.reduceColumns(ee.Reducer.toList(1), ['BAIRRO']).get('list'))
+    bairros_list_temp = ee.List(geometry.reduceColumns(ee.Reducer.toList(1), [FeatureID]).get('list'))
     bairros_list = bairros_list_temp.map(list_simplify)
     bairros_list_complete = bairros_list.add('system:time_start')
     nested_list = reduced_collection.reduceColumns(ee.Reducer.toList(bairros_list_complete.length()), bairros_list_complete).values().get(0)

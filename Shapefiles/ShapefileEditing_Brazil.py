@@ -33,10 +33,10 @@ def ShapefileFormatter(shpfilepath, writepath):
 
     
     # Read in original shapefile
-    r = shapefile.Reader(shpfilepath)
+    r = shapefile.Reader(shpfilepath, encoding="ISO-8859-1")
     
     # Create a new shapefile in memory
-    w = shapefile.Writer(writepath)
+    w = shapefile.Writer(writepath, encoding="ISO-8859-1")
     
     # Copy over the existing fields
     fields = r.fields
@@ -51,9 +51,9 @@ def ShapefileFormatter(shpfilepath, writepath):
      
     for shaperec in r.iterShapeRecords():
        
-        oldstring = shaperec.record['BAIRRO']
+        oldstring = shaperec.record['nome']
         newstring = oldstring.replace(" ", "_")
-        shaperec.record['BAIRRO'] = newstring
+        shaperec.record['nome'] = newstring
         print(shaperec.record)
         w.shape(shaperec.shape)
         w.record(*shaperec.record)
@@ -64,8 +64,8 @@ def ShapefileFormatter(shpfilepath, writepath):
 
 
 
-shppath = './City/Bairros.shp'
-writepath = './Data/Shapefiles/Bairros_Underscores.shp'
+shppath = '/home/jackreid/Documents/School/Research/Space Enabled/Code/Nightlights-Mobility/Shapefiles/State/hc979qh6228_gcs.shp'
+writepath = '/home/jackreid/Documents/School/Research/Space Enabled/Code/Nightlights-Mobility/Shapefiles/State/hc979qh6228_gcs_Underscores.shp'
 
 
 ShapefileFormatter(shppath, writepath)
