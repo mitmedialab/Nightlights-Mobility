@@ -46,8 +46,8 @@ mobility_cities =  mobility.loc[(pd.notnull(mobility['sub_region_2']))]
 mobility_rio = mobility.loc[mobility['sub_region_2'] == 'Rio de Janeiro']
 
 
-ax = nightlights.plot(x="system:time_start", y="Rio_de_Janeiro")
-ax2 = mobility_rio.plot(x="date", y='residential_percent_change_from_baseline', secondary_y=True, ax=ax)
+ax = nightlights.plot(x="system:time_start", y="Rio_de_Janeiro", label='Nightlights')
+ax2 = mobility_rio.plot(x="date", y='residential_percent_change_from_baseline',label='Residential Mobility', secondary_y=True, ax=ax)
 
 ax.set_ylabel('Nighlights')
 ax2.set_ylabel('Mobility')
