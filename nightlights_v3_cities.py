@@ -9,7 +9,7 @@ Created on Mon May 10 10:42:17 2021
 import ee
 import geemap
 import folium
-import gee_custom_utilities as gcu
+from gee_custom_utilities import gee_custom_utilities as gcu
 import pandas as pd
 import matplotlib.pyplot as plt
 import pickle
@@ -249,6 +249,16 @@ TSVisParams = {"opacity":1,
 m.add_ee_layer(sensSlope,
                 TSVisParams,
                 'Nightlights TS Estimator', True, 1, 9)
+
+
+MeanAnomalyVisParams = {"opacity":1,
+                        "min":-100,
+                        "max":100,
+                        "gamma":1}
+
+m.add_ee_layer(DNB_MeanAnomaly,
+                MeanAnomalyVisParams,
+                'Nightlights Mean Anomaly', True, 1, 9)
 
 BairrosVisParams = {"opacity":1,
                         'palette': 'd62ccd'}

@@ -19,7 +19,7 @@ with open('./Nightlights_Data/Rio_de_Janeiro/cities_median.pickle', 'rb') as f:
     nightlights = pickle.load(f)
     
 
-mobility = pd.read_csv('./MobilityData/RioDeJaneiro/2020_BR_Region_Mobility_Report_state.csv')
+mobility = pd.read_csv('./MobilityData/RioDeJaneiro/BR_Region_Mobility_Report_state.csv')
 mobility_keys = list(mobility.keys())
 keep_list = ['sub_region_1', 
              'sub_region_2',  
